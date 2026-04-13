@@ -1,0 +1,30 @@
+---
+// Base layout that wraps every page
+export interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title = "Green Peak Solutions – Solar Energy Nigeria", description = "Professional solar panel installation, sales, and maintenance across Nigeria." } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="keywords" content="solar panels Nigeria, solar installers Lagos, inverters, batteries, renewable energy" />
+    <meta name="author" content="Green Peak Solutions" />
+    <title>{title}</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="/src/styles/global.css" />
+  </head>
+  <body class="font-sans antialiased">
+    <Header />
+    <main>
+      <slot />  <!-- This is where your page content goes -->
+    </main>
+    <Footer />
+  </body>
+</html>
