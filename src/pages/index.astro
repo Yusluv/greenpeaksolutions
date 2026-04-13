@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import WhatsAppWidget from '../components/WhatsAppWidget.astro';
+import CertificationsCarousel from '../components/CertificationsCarousel.astro';
+import GoogleReviews from '../components/GoogleReviews.astro';
+---
+
+<BaseLayout title="Green Peak Solutions – #1 Solar Company in Nigeria">
+  <WhatsAppWidget />
+
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-r from-primary to-dark text-white py-20">
+    <div class="container mx-auto px-6 text-center">
+      <h1 class="text-4xl md:text-6xl font-bold mb-4">Power Nigeria with Solar Energy</h1>
+      <p class="text-xl mb-8">Installation | Sales | Maintenance – For homes & businesses nationwide</p>
+      <a href="/contact" class="bg-secondary hover:bg-amber-600 text-dark font-bold py-3 px-8 rounded-lg transition">Get Free Quote</a>
+    </div>
+  </section>
+
+  <!-- Services Overview -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-12">Our Core Services</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white p-6 rounded shadow"><h3 class="text-xl font-bold">Installation</h3><p>Expert setup of solar panels, inverters & batteries.</p></div>
+        <div class="bg-white p-6 rounded shadow"><h3 class="text-xl font-bold">Sales</h3><p>High-quality panels, inverters, cables & accessories.</p></div>
+        <div class="bg-white p-6 rounded shadow"><h3 class="text-xl font-bold">Maintenance</h3><p>24/7 support, cleaning & system upgrades.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <CertificationsCarousel />
+  <GoogleReviews />
+
+  <!-- CTA -->
+  <section class="bg-primary text-white py-12 text-center">
+    <h2 class="text-2xl font-bold">Ready to reduce your electricity bill?</h2>
+    <a href="/load-calculator" class="inline-block mt-4 bg-secondary px-6 py-2 rounded">Calculate Your Solar Needs</a>
+  </section>
+</BaseLayout>

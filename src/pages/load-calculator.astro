@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Solar Load Calculator">
+  <div class="container mx-auto px-6 py-12">
+    <h1 class="text-3xl font-bold mb-4">Solar Load Calculator</h1>
+    <p>Enter your appliances and we'll estimate your solar system size.</p>
+    <div id="calculator-root" class="mt-6">
+      <!-- JavaScript widget will be injected here -->
+      <script>
+        // Simple interactive calculator
+        function calculate() {
+          let totalWatts = 0;
+          const items = ['fridge', 'tv', 'lights', 'fan', 'other'];
+          items.forEach(id => {
+            const val = document.getElementById(id)?.value || 0;
+            totalWatts += parseInt(val);
+          });
+          const panelCount = Math.ceil(totalWatts / 400);
+          document.getElementById('result').innerHTML = `Recommended: ${panelCount} x 400W solar panels + 2 batteries.`;
+        }
+      </script>
+      <div class="grid gap-4">
+        <input id="fridge" type="number" placeholder="Fridge (Watts)" class="border p-2 rounded" />
+        <input id="tv" type="number" placeholder="TV (Watts)" class="border p-2 rounded" />
+        <button onclick="calculate()" class="bg-primary text-white p-2 rounded">Calculate</button>
+        <div id="result" class="mt-4 p-4 bg-gray-100 rounded"></div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

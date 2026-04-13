@@ -1,0 +1,49 @@
+---
+// Header component with navigation
+---
+
+<header class="bg-white shadow-md sticky top-0 z-50">
+  <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+    <!-- Logo -->
+    <a href="/" class="flex items-center space-x-2">
+      <img src="/images/logo.svg" alt="Green Peak Solutions" class="h-10 w-auto" onerror="this.style.display='none'">
+      <span class="text-xl font-bold text-primary">Green Peak Solutions</span>
+    </a>
+    
+    <!-- Desktop Menu -->
+    <div class="hidden md:flex space-x-6">
+      <a href="/" class="hover:text-primary transition">Home</a>
+      <a href="/about" class="hover:text-primary transition">About</a>
+      <a href="/services" class="hover:text-primary transition">Services</a>
+      <a href="/shop" class="hover:text-primary transition">Shop</a>
+      <a href="/load-calculator" class="hover:text-primary transition">Load Calculator</a>
+      <a href="/contact" class="hover:text-primary transition">Contact</a>
+    </div>
+    
+    <!-- Mobile Menu Button -->
+    <button id="menu-btn" class="md:hidden focus:outline-none">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+    </button>
+  </nav>
+  
+  <!-- Mobile Menu (hidden by default) -->
+  <div id="mobile-menu" class="md:hidden hidden bg-white px-6 pb-4">
+    <a href="/" class="block py-2 hover:text-primary">Home</a>
+    <a href="/about" class="block py-2 hover:text-primary">About</a>
+    <a href="/services" class="block py-2 hover:text-primary">Services</a>
+    <a href="/shop" class="block py-2 hover:text-primary">Shop</a>
+    <a href="/load-calculator" class="block py-2 hover:text-primary">Load Calculator</a>
+    <a href="/contact" class="block py-2 hover:text-primary">Contact</a>
+  </div>
+</header>
+
+<script>
+  // Mobile menu toggle
+  const btn = document.getElementById('menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  btn?.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+  });
+</script>
