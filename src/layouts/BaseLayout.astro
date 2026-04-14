@@ -1,8 +1,4 @@
 ---
-// Import components
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-
 export interface Props {
   title?: string;
   description?: string;
@@ -19,13 +15,78 @@ const { title = "Green Peak Solutions – Solar Energy Nigeria", description = "
     <meta name="keywords" content="solar panels Nigeria, solar installers Lagos, inverters, batteries, renewable energy" />
     <title>{title}</title>
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="stylesheet" href="/src/styles/global.css" />
+    <style>
+      *{margin:0;padding:0;box-sizing:border-box}body{font-family:sans-serif;background:#f9fafb}
+      .container{max-width:1200px;margin:0 auto;padding:0 1.5rem}
+      .bg-primary{background:#0f766e}.bg-dark{background:#1e293b}.bg-white{background:#fff}
+      .text-white{color:#fff}.text-primary{color:#0f766e}.text-center{text-align:center}
+      .shadow{box-shadow:0 1px 3px rgba(0,0,0,0.1)}.rounded-lg{border-radius:0.5rem}
+      .py-4{padding-top:1rem;padding-bottom:1rem}.py-8{padding-top:2rem;padding-bottom:2rem}
+      .px-6{padding-left:1.5rem;padding-right:1.5rem}.mt-12{margin-top:3rem}
+      .flex{display:flex}.justify-between{justify-content:space-between}.items-center{align-items:center}
+      .hidden{display:none}@media (min-width:768px){.md\\:flex{display:flex}.md\\:hidden{display:none}}
+      .space-x-6>*+*{margin-left:1.5rem}.font-bold{font-weight:700}.text-xl{font-size:1.25rem}
+      .hover\\:text-primary:hover{color:#0f766e}.sticky{position:sticky;top:0;z-index:50}
+      button{background:none;border:none;font-size:1.5rem;cursor:pointer}
+      .grid{display:grid}.grid-cols-1{grid-template-columns:1fr}
+      @media (min-width:768px){.md\\:grid-cols-3{grid-template-columns:repeat(3,1fr)}}
+      .gap-6{gap:1.5rem}.border{border:1px solid #e5e7eb}.p-4{padding:1rem}
+      .text-yellow-500{color:#eab308}.fixed{position:fixed}.bottom-6{bottom:1.5rem}.right-6{right:1.5rem}
+      .bg-green-500{background:#22c55e}.rounded-full{border-radius:9999px}.z-50{z-index:50}
+    </style>
   </head>
   <body>
-    <Header />
+    <!-- Header -->
+    <header class="bg-white shadow sticky">
+      <div class="container py-4 flex justify-between items-center">
+        <a href="/" class="text-xl font-bold text-primary">Green Peak Solutions</a>
+        <div class="hidden md:flex space-x-6">
+          <a href="/" class="hover:text-primary">Home</a>
+          <a href="/about" class="hover:text-primary">About</a>
+          <a href="/services" class="hover:text-primary">Services</a>
+          <a href="/shop" class="hover:text-primary">Shop</a>
+          <a href="/load-calculator" class="hover:text-primary">Load Calculator</a>
+          <a href="/contact" class="hover:text-primary">Contact</a>
+        </div>
+        <button id="menu-btn" class="md:hidden">☰</button>
+      </div>
+      <div id="mobile-menu" class="hidden md:hidden bg-white px-6 pb-4">
+        <a href="/" class="block py-2">Home</a>
+        <a href="/about" class="block py-2">About</a>
+        <a href="/services" class="block py-2">Services</a>
+        <a href="/shop" class="block py-2">Shop</a>
+        <a href="/load-calculator" class="block py-2">Load Calculator</a>
+        <a href="/contact" class="block py-2">Contact</a>
+      </div>
+    </header>
+
+    <!-- Main content -->
     <main>
       <slot />
     </main>
-    <Footer />
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-8 mt-12">
+      <div class="container text-center">
+        <p>© 2025 Green Peak Solutions. All rights reserved.</p>
+        <p class="mt-2">📍 Lagos, Nigeria | 📞 +234 812 345 6789 | 📧 info@greenpeaksolutions.com</p>
+      </div>
+    </footer>
+
+    <!-- Mobile menu toggle script -->
+    <script>
+      const btn = document.getElementById('menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      if (btn && mobileMenu) {
+        btn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+      }
+    </script>
+
+    <!-- WhatsApp floating widget -->
+    <a href="https://wa.me/2348123456789?text=Hello%20Green%20Peak%20Solutions%2C%20I%20need%20a%20quote" target="_blank" class="fixed bottom-6 right-6 bg-green-500 rounded-full p-3 shadow z-50">
+      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="white">
+        <path d="M12.032 2.001c-5.514 0-9.99 4.476-9.99 9.99 0 1.75.453 3.462 1.31 4.978l-1.394 4.164 4.298-1.33c1.447.79 3.076 1.208 4.776 1.208 5.514 0 9.99-4.476 9.99-9.99s-4.476-9.99-9.99-9.99zm0 18.38c-1.504 0-2.973-.404-4.25-1.166l-.305-.18-2.552.79.823-2.488-.19-.317c-.832-1.32-1.27-2.84-1.27-4.41 0-4.58 3.727-8.308 8.308-8.308s8.308 3.727 8.308 8.308-3.727 8.307-8.308 8.307z"/>
+      </svg>
+    </a>
   </body>
 </html>
